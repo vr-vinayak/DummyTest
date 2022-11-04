@@ -4,4 +4,4 @@ def test(x):
 
 def test_answer():
     print('test 2')
-    assert test(1) == 5
+    assert test(4) == 5
