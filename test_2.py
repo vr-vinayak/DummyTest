@@ -1,7 +1,7 @@
-def test(x):
-    print('test 2')
+def inc(x):
+    print('2nd test')
     return x + 1
 
 def test_answer():
-    print('test 2')
-    assert test(4) == 5
+    print('2nd test')
+    assert inc(4) == 5
