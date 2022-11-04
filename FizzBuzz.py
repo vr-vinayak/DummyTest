@@ -1,4 +1,4 @@
-for counter in range(1,100):
+for counter in range(1,60):
     if counter%3==0:
         print('Fizz Multiple of only 3')
     if counter%5==0:
