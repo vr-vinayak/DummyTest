@@ -1,26 +1,39 @@
 pipeline {
     agent any
     stages {
-        stage('git repo & clean') {
+        stage('Hello') {
             steps {
-               bat "rmdir  /s /q DummyTest"
-                bat "git clone https://github.com/vr-vinayak/DummyTest.git"
-                bat "mvn clean -f DummyTest"
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/vr-vinayak/DummyTest.git']]])
             }
         }
-        stage('install') {
+        stage('Build') {
             steps {
-                bat "mvn install -f DummyTest"
+                echo 'building and testing stage'
+                git branch: 'main', url: 'https://github.com/vr-vinayak/DummyTest.git'
+                bat "python --version"
+                bat "python -m pip install pip"
+                bat "pip --version"
+                bat "pip install pytest"
+                bat "pytest FizzBuzz.py"
+                bat "pytest test_2.py"
             }
         }
-        stage('test') {
+        stage('QA') {
             steps {
-                bat "mvn test -f DummyTest"
+                echo 'Test Succeeded'
             }
         }
-        stage('package') {
+        stage('Dev Approval'){
             steps {
-                bat "mvn package -f DummyTest"
+                echo 'Getting Approval of Admin'
+                timeout(time: 3, unit: 'DAYS') {
+                    input message: 'Code has been build and tested, Would you like to proceed ahead?', submitter: 'Admin'
+                }
+            }
+        }
+        stage('Deploy') {
+            steps{
+                echo 'Deploying'
             }
         }
     }
