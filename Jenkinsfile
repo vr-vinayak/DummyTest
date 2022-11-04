@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('git repo & clean') {
             steps {
-               //bat "rmdir  /s /q DummyTest"
+               bat "rmdir  /s /q DummyTest"
                 bat "git clone https://github.com/vr-vinayak/DummyTest.git"
                 bat "mvn clean -f DummyTest"
             }
