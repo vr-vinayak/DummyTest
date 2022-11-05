@@ -6,7 +6,7 @@ pipeline {
                 checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/vr-vinayak/DummyTest.git']]])
             }
         }
-        stage('Build') {
+        stage('Build & test') {
             steps {
                 echo 'building and testing stage'
                 git branch: 'main', url: 'https://github.com/vr-vinayak/DummyTest.git'
