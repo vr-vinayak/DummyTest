@@ -9,5 +9,5 @@ def inc(base_x):
 
 def test_answer():
     '''simple base function'''
-    print('2nd test!!!!')
+    print('2nd test!!')
     assert inc(4) == 5
