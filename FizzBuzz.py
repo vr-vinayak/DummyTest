@@ -1,5 +1,5 @@
 def inc(x):
-    return 4+1
+    return x+1
 
 def test_answer():
-    assert inc(5) == 5
+    assert inc(4) == 5
