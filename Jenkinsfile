@@ -13,13 +13,13 @@ pipeline {
                 sh 'python3 --version'
                 sh 'pip3 --version'
                 sh 'python3 -m pytest --version'
-                sh 'python3 -m pytest test_2.py'
+                sh 'python3 -m pytest test_1.py'
             }
         }
         stage('QA(pylint)') {
             steps {
                 echo 'Code Quality Check'
-                sh "python3 -m pylint test_1.py"
+                sh "python3 -m pylint test_2.py"
             }
         }
         stage('Dev Approval'){
